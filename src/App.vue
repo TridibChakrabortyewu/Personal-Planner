@@ -27,7 +27,7 @@ body {
   margin: 0 auto;
   color: #555;
 }
-@media (max-width: 420px) and (min-width: 320px) {
+@media (max-width: 425px) and (min-width: 320px) {
   body {
     background: url("../src/assets/Layer-m.svg") no-repeat 0px 0px / contain;
   }
