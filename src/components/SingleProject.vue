@@ -25,7 +25,6 @@ export default {
     return {
       showDetails: false,
       url: "https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects/" + this.project.id,
-      // url: "https://jsonplaceholder.typicode.com/todos" + this.project.id,
     };
   },
   methods: {
