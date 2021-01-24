@@ -7,7 +7,6 @@
     <pre class="warning">{{ t }} &nbsp;</pre>
     <button @click.prevent="onUpdate">Add Project</button>
   </form>
-
 </template>
 
 <script>
@@ -18,8 +17,11 @@ export default {
       title: "",
       details: "",
       project: [],
-      t: '',
-      url: "https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects/" + this.id,
+      t: "",
+      url:
+        "https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects/" +
+        this.id,
+      // url: "https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects/" + this.id,
     };
   },
   methods: {

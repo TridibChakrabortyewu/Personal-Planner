@@ -52,6 +52,7 @@ form {
   background: white;
   padding: 20px;
   border-radius: 10px;
+  box-shadow: 1px 1px 10px 0.5px rgb(209, 209, 209);
 }
 label {
   display: block;

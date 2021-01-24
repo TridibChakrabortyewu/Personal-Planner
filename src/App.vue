@@ -1,20 +1,23 @@
 <template>
   <Navbar />
-  <router-view/>
+  <router-view />
 </template>
 
 
 <script>
-import Navbar from './components/Navbar'
+import Navbar from "./components/Navbar";
 
 export default {
-  components: { Navbar }
-}
+  components: { Navbar },
+};
 </script>
 
 <style>
-body{
+body {
   background: #f2f2f2;
+}
+body {
+  background: url("../src/assets/Layer.svg") no-repeat 0px 0px / contain;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -23,5 +26,10 @@ body{
   max-width: 600px;
   margin: 0 auto;
   color: #555;
+}
+@media (max-width: 420px) and (min-width: 320px) {
+  body {
+    background: url("../src/assets/Layer-m.svg") no-repeat 0px 0px / contain;
+  }
 }
 </style>

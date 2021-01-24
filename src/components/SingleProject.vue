@@ -54,6 +54,8 @@ export default {
   border-radius: 4px;
   box-shadow: 1px 2px 3px rgba(240, 135, 135, 0.05);
   border-left: 4px solid #e90074;
+  box-shadow: 1px 1px 10px 0.5px rgb(209, 209, 209);
+
 }
 h3 {
   cursor: pointer;
