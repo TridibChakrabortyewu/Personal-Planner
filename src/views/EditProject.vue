@@ -14,7 +14,7 @@
       v-model.trim="details"
     ></textarea>
     <pre class="warning">{{ t }} &nbsp;</pre>
-    <button>Add Project</button>
+    <button @click.prevent="onUpdate">Add Project</button>
   </form>
 </template>
 
