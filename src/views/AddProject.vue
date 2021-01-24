@@ -1,7 +1,8 @@
 <template>
+
   <form @submit.prevent="handleSubmit">
     <label>Title:</label>
-    <input @click="onClick" :class="inBorder" v-model.trim="title" type="text" />
+    <input class="cc" @click="onClick" :class="inBorder" v-model.trim="title" type="text" />
     <label>Details</label>
     <textarea @click="onClick2" :class="{inBorder: isActivet}" v-model.trim="details"></textarea>
     <pre class="warning">{{ t }} &nbsp;</pre>
@@ -113,6 +114,7 @@ form button {
   padding: 10px;
   border: 0;
   border-radius: 6px;
+  cursor: pointer;
   font-size: 16px;
 }
 .warning {
