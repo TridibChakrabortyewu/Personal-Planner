@@ -56,7 +56,6 @@ export default {
         this.title = data.title;
         this.details = data.details;
         this.project = data;
-        // this.onClick()
       });
   },
 };
