@@ -1,9 +1,9 @@
 <template>
   <form @submit.prevent="handleSubmit">
     <label>Title:</label>
-    <input v-model.trim="title" type="text" />
+    <input @click="onClick" :class="inBorder" v-model.trim="title" type="text" />
     <label>Details</label>
-    <textarea v-model.trim="details"></textarea>
+    <textarea @click="onClick2" :class="{inBorder: isActivet}" v-model.trim="details"></textarea>
     <pre class="warning">{{ t }} &nbsp;</pre>
     <button>Add Project</button>
   </form>
@@ -18,9 +18,26 @@ export default {
       msg: "",
       t: "",
       d: "",
+      isActive: false,
+      isActivet: false,
     };
   },
+  computed: {
+  inBorder: function () {
+    return {
+      inBorder: this.isActive,
+    }
+  }
+},
   methods: {
+    onClick(){
+      this.isActive = true
+      this.isActivet = false
+    },
+    onClick2(){
+      this.isActive = false
+      this.isActivet = true
+    },
     handleSubmit() {
       let project = {
         title: this.title,
@@ -29,18 +46,21 @@ export default {
       };
 
       if (project.title && project.details) {
-        fetch("https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects", {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify(project),
-        }).then(() => this.$router.push({ name: "Home" }));
+        fetch(
+          "https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects",
+          {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(project),
+          }
+        ).then(() => this.$router.push({ name: "Home" }));
       } else {
         this.t =
-        !project.title && !project.details
-          ? `Please Enter 'TITLE' & 'DETAILS'`
-          : !project.title
-          ? "Please Enter 'TITLE'"
-          : "Please Enter 'DETAILS'";
+          !project.title && !project.details
+            ? `Please fill 'TITLE' & 'DETAILS'`
+            : !project.title
+            ? "Please fill 'TITLE'"
+            : "Please fill 'DETAILS'";
       }
     },
   },
@@ -69,6 +89,12 @@ input {
   border-bottom: 1px solid #ddd;
   width: 100%;
   box-sizing: border-box;
+  outline: none;
+}
+.inBorder {
+  border: 3px solid rgba(73, 152, 241, 0.8);
+  /* border: 3px solid #0366D6; */
+  border-radius: 8px;
 }
 textarea {
   border: 1px solid #ddd;
@@ -77,6 +103,7 @@ textarea {
   box-sizing: border-box;
   height: 100px;
   margin: 0 0 25px 0;
+  outline: none;
 }
 form button {
   display: block;
@@ -88,9 +115,8 @@ form button {
   border-radius: 6px;
   font-size: 16px;
 }
-.warning{
-    color: crimson;
-    font-weight: bold;
+.warning {
+  color: crimson;
+  font-weight: bold;
 }
-
 </style>
