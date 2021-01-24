@@ -1,9 +1,9 @@
 <template>
   <form @submit.prevent="handleSubmit">
     <label>Title:</label>
-    <input v-model="title" type="text" />
+    <input v-model.trim="title" type="text" />
     <label>Details</label>
-    <textarea v-model="details"></textarea>
+    <textarea v-model.trim="details"></textarea>
     <pre class="warning">{{ t }} &nbsp;</pre>
     <button>Add Project</button>
   </form>
