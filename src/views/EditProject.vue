@@ -7,6 +7,7 @@
       v-model.trim="title"
       type="text"
     />
+    <pre class="warning">{{ g }} &nbsp;</pre>
     <label>Details</label>
     <textarea
       @click="onClicks2"
@@ -27,6 +28,7 @@ export default {
       details: "",
       project: [],
       t: "",
+      g: "",
       isActive: false,
       isActivet: false,
       url:
@@ -36,38 +38,48 @@ export default {
     };
   },
   computed: {
-  inBorder: function () {
-    return {
-      inBorder: this.isActive,
-    }
-  }
-},
-  methods: {
-    onClicks(){
-      this.isActive = true
-      this.isActivet = false
+    inBorder: function () {
+      return {
+        inBorder: this.isActive,
+      };
     },
-    onClicks2(){
-      this.isActive = false
-      this.isActivet = true
+  },
+  methods: {
+    onClicks() {
+      this.isActive = true;
+      this.isActivet = false;
+    },
+    onClicks2() {
+      this.isActive = false;
+      this.isActivet = true;
     },
     onClick() {
       this.title = this.project.title;
       this.details = this.project.details;
     },
     onUpdate() {
+      let bellowTh = /^.{1,29}$/g;
+      let threeWords = /^([\S]+)\s([\S]+)\s([\S]+)/g;
       let p = {
         title: this.title,
         details: this.details,
         complete: false,
       };
-      if (p.title && p.details) {
-        fetch(this.url, {
-          method: "PATCH",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify(p),
-        }).then(() => this.$router.push({ name: "Home" }));
-      } else {
+      if (p.title && p.details){
+        if (!this.title.match(threeWords)) {
+          this.g = `TITLE must contain at least 3 words`;
+        } else if (!this.title.match(bellowTh)) {
+          this.g = `TITLE can contain only 30 characters`;
+        } else {
+          this.g = "";
+
+          fetch(this.url, {
+            method: "PATCH",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(p),
+          }).then(() => this.$router.push({ name: "Home" }));
+        }
+      }else {
         this.t =
           !p.title && !p.details
             ? `Please Enter 'TITLE' & 'DETAILS'`

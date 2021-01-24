@@ -1,10 +1,20 @@
 <template>
-
   <form @submit.prevent="handleSubmit">
     <label>Title:</label>
-    <input class="cc" @click="onClick" :class="inBorder" v-model.trim="title" type="text" />
+    <input
+      class="cc"
+      @click="onClick"
+      :class="inBorder"
+      v-model.trim="title"
+      type="text"
+    />
+    <pre class="warning">{{ g }} &nbsp;</pre>
     <label>Details</label>
-    <textarea @click="onClick2" :class="{inBorder: isActivet}" v-model.trim="details"></textarea>
+    <textarea
+      @click="onClick2"
+      :class="{ inBorder: isActivet }"
+      v-model.trim="details"
+    ></textarea>
     <pre class="warning">{{ t }} &nbsp;</pre>
     <button>Add Project</button>
   </form>
@@ -19,25 +29,26 @@ export default {
       msg: "",
       t: "",
       d: "",
+      g: "",
       isActive: false,
       isActivet: false,
     };
   },
   computed: {
-  inBorder: function () {
-    return {
-      inBorder: this.isActive,
-    }
-  }
-},
-  methods: {
-    onClick(){
-      this.isActive = true
-      this.isActivet = false
+    inBorder: function () {
+      return {
+        inBorder: this.isActive,
+      };
     },
-    onClick2(){
-      this.isActive = false
-      this.isActivet = true
+  },
+  methods: {
+    onClick() {
+      this.isActive = true;
+      this.isActivet = false;
+    },
+    onClick2() {
+      this.isActive = false;
+      this.isActivet = true;
     },
     handleSubmit() {
       let project = {
@@ -45,8 +56,17 @@ export default {
         details: this.details,
         complete: false,
       };
+      let bellowTh = /^.{1,29}$/g;
+      let threeWords = /^([\S]+)\s([\S]+)\s([\S]+)/g;
 
       if (project.title && project.details) {
+        if (!this.title.match(threeWords)) {
+          this.g = `TITLE must contain at least 3 words`
+          // this.h = `DETAILS must contain at least 3 words`
+        }else if(!this.title.match(bellowTh)){
+          this.g = `TITLE can contain only 30 characters`
+        }else{
+          this.g = ""
         fetch(
           "https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects",
           {
@@ -55,7 +75,7 @@ export default {
             body: JSON.stringify(project),
           }
         ).then(() => this.$router.push({ name: "Home" }));
-      } else {
+      }} else {
         this.t =
           !project.title && !project.details
             ? `Please fill 'TITLE' & 'DETAILS'`
