@@ -89,6 +89,7 @@ form button {
 }
 .warning{
     color: crimson;
+    font-weight: bold;
 }
 
 </style>
