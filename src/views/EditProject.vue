@@ -67,9 +67,9 @@ export default {
       };
       if (p.title && p.details){
         if (!this.title.match(threeWords)) {
-          this.g = `TITLE must contain at least 3 words`;
+          this.g = `TITLE must contains at least 3 words`;
         } else if (!this.title.match(bellowTh)) {
-          this.g = `TITLE can contain only 30 characters`;
+          this.g = `TITLE can contains only 30 characters`;
         } else {
           this.g = "";
 
@@ -82,10 +82,10 @@ export default {
       }else {
         this.t =
           !p.title && !p.details
-            ? `Please Enter 'TITLE' & 'DETAILS'`
+            ? `Please fill 'TITLE' & 'DETAILS'`
             : !p.title
-            ? "Please Enter 'TITLE'"
-            : "Please Enter 'DETAILS'";
+            ? "Please fill 'TITLE'"
+            : "Please fill 'DETAILS'";
       }
     },
   },
