@@ -9,7 +9,7 @@
           <span class="material-icons"> edit </span>
         </router-link>
         <span @click="onDelete" class="material-icons"> delete </span>
-        <span @click="onComplete" class="material-icons"> done </span>
+        <span @click="onComplete" class="material-icons" :class="{done: this.project.complete}"> done </span>
       </div>
     </div>
     <div v-if="showDetails" class="details">
@@ -24,8 +24,8 @@ export default {
   data() {
     return {
       showDetails: false,
-      // url: "https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects/" + this.project.id,
-      url: "http://localhost:3000/projects/" + this.project.id,
+      url: "https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects/" + this.project.id,
+      // url: "http://localhost:3000/projects/" + this.project.id,
     };
   },
   methods: {
@@ -82,6 +82,9 @@ h3 {
 .complete {
   border-left: 4px solid #00ce89;
 }
+.done{
+  color: #00ce89;
+}
 @media (max-width: 425px) {
   .image {
     height: 250px;
@@ -91,7 +94,7 @@ h3 {
     max-width: 300px;
   }
   .details p{
-    font-size: 10px;
+    font-size: 12px;
     max-width: 280px;
     text-align: left;
   }

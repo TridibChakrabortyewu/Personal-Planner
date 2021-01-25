@@ -31,10 +31,10 @@ export default {
       g: "",
       isActive: false,
       isActivet: false,
-      // url:
-      //   "https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects/" +
-      //   this.id,
-      url: "http://localhost:3000/projects/" + this.id,
+      url:
+        "https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects/" +
+        this.id,
+      // url: "http://localhost:3000/projects/" + this.id,
     };
   },
   computed: {

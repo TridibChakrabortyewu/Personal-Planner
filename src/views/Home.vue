@@ -1,8 +1,9 @@
 <template>
   <div class="home">
-    <FilterNav :current="current" @filterChange="current = $event"/>
+    <FilterNav @filterChange="current = $event" :current="current" />
     <div v-if="projects.length">
-      <div v-for="project in projects" :key="project.id">
+      <!-- {{ diffActions }} -->
+      <div v-for="project in filteredProjects" :key="project.id">
         <SingleProject
           :project="project"
           @delete="onDelete"
@@ -25,12 +26,11 @@ export default {
   components: { SingleProject, FilterNav },
   data() {
     return {
-      i: 0,
-      current: 'all',
+      current: "all",
       projects: [],
-      url: "http://localhost:3000/projects",
-      // url:
-      //   "https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects",
+      // url: "http://localhost:3000/projects",
+      url:
+        "https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects",
     };
   },
   mounted() {
@@ -39,34 +39,37 @@ export default {
       .then((data) => (this.projects = data))
       .catch(new Error("Fetch error..."));
   },
-  updated(){
-    if(this.current === 'completed'){
-      this.projects = this.projects.filter((project) => {
-        return project.complete === true
-      })
-    }else if(this.current === 'all'){
-      fetch(this.url)
-      .then((res) => res.json())
-      .then((data) => (this.projects = data) )
-      .catch(new Error("Fetch error..."));
-
-    }else if(this.current === 'ongoing'){
-      this.projects = this.projects.filter((project) => {
-        return project.complete !== true
-      })
-    }
-  },
   methods: {
     onDelete(d) {
       this.projects = this.projects.filter((project) => {
         return project.id !== d;
       });
     },
+    onFetch() {
+      fetch(this.url)
+        .then((res) => res.json())
+        .then((data) => (this.projects = data))
+        .catch(new Error("Fetch error..."));
+    },
     onComplete(id) {
+      //onComplete(id) is for updating local data
+      //only one single object will be given into "p"
+      //according to the completed id
       let p = this.projects.find((project) => {
         return project.id === id;
       });
       p.complete = !p.complete;
+    },
+  },
+  computed: {
+    filteredProjects() {
+      if (this.current === "completed") {
+        return this.projects.filter((project) => project.complete);
+      }
+      if (this.current === "ongoing") {
+        return this.projects.filter((project) => !project.complete);
+      }
+      return this.projects;
     },
   },
 };

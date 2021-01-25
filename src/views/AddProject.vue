@@ -32,9 +32,9 @@ export default {
       g: "",
       isActive: false,
       isActivet: false,
-      url: "http://localhost:3000/projects",
-      // url:
-      //   "https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects",
+      // url: "http://localhost:3000/projects",
+      url:
+        "https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects",
     };
   },
   computed: {
