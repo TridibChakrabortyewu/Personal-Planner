@@ -15,7 +15,7 @@
       v-model.trim="details"
     ></textarea>
     <pre class="warning">{{ t }} &nbsp;</pre>
-    <button @click.prevent="onUpdate">Add Project</button>
+    <button @click.prevent="onUpdate">Update Project</button>
   </form>
 </template>
 
@@ -34,7 +34,7 @@ export default {
       url:
         "https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects/" +
         this.id,
-      // url: "https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects/" + this.id,
+      // url: "http://localhost:3000/projects/" + this.id,
     };
   },
   computed: {
@@ -65,7 +65,7 @@ export default {
         details: this.details,
         complete: false,
       };
-      if (p.title && p.details){
+      if (p.title && p.details) {
         if (!this.title.match(threeWords)) {
           this.g = `TITLE must contains at least 3 words`;
         } else if (!this.title.match(bellowTh)) {
@@ -79,13 +79,13 @@ export default {
             body: JSON.stringify(p),
           }).then(() => this.$router.push({ name: "Home" }));
         }
-      }else {
+      } else {
         this.t =
           !p.title && !p.details
-            ? `Please fill 'TITLE' & 'DETAILS'`
+            ? `Please fill out 'TITLE' & 'DETAILS' fields`
             : !p.title
-            ? "Please fill 'TITLE'"
-            : "Please fill 'DETAILS'";
+            ? "Please fill out 'TITLE' field"
+            : "Please fill out 'DETAILS' field";
       }
     },
   },

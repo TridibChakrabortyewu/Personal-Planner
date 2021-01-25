@@ -2,7 +2,11 @@
   <div class="home">
     <div v-if="projects.length">
       <div v-for="project in projects" :key="project.id">
-        <SingleProject :project="project" @delete="onDelete" @complete="onComplete"/>
+        <SingleProject
+          :project="project"
+          @delete="onDelete"
+          @complete="onComplete"
+        />
       </div>
     </div>
     <div v-else>
@@ -20,32 +24,29 @@ export default {
   data() {
     return {
       projects: [],
+      // url: "http://localhost:3000/projects",
+      url:
+        "https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects",
     };
   },
   mounted() {
-    fetch("https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects")
+    fetch(this.url)
       .then((res) => res.json())
       .then((data) => (this.projects = data))
       .catch(new Error("Fetch error..."));
-    // axios.get('http://jsonplaceholder.typicode.com/comments')
-    //   .then((res) => (this.projects = res))
-    //   .catch(new Error("Fetch error..."));
-    //   console.log('axios')
   },
   methods: {
     onDelete(d) {
       this.projects = this.projects.filter((project) => {
-        return project.id !== d
+        return project.id !== d;
       });
     },
-      onComplete(id){
+    onComplete(id) {
       let p = this.projects.find((project) => {
-        return project.id === id
-      })
-      p.complete = !p.complete
-      // console.log(p)
-      // console.log(this.projects[0].title)
-    }
+        return project.id === id;
+      });
+      p.complete = !p.complete;
+    },
   },
 };
 </script>

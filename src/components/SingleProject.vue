@@ -3,7 +3,9 @@
     <div class="actions">
       <h3 @click="showDetails = !showDetails">{{ project.title }}</h3>
       <div class="icons">
-        <router-link :to="{ name: 'EditProject', params: {id: this.project.id}}">
+        <router-link
+          :to="{ name: 'EditProject', params: { id: this.project.id } }"
+        >
           <span class="material-icons"> edit </span>
         </router-link>
         <span @click="onDelete" class="material-icons"> delete </span>
@@ -12,8 +14,6 @@
     </div>
     <div v-if="showDetails" class="details">
       <p>{{ project.details }}</p>
-      <!-- <p>{{ project.body }}</p> -->
-      <!-- <img class="image" :src="project.url" alt="" /> -->
     </div>
   </div>
 </template>
@@ -25,6 +25,7 @@ export default {
     return {
       showDetails: false,
       url: "https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects/" + this.project.id,
+      // url: "http://localhost:3000/projects/" + this.project.id,
     };
   },
   methods: {
@@ -55,7 +56,6 @@ export default {
   box-shadow: 1px 2px 3px rgba(240, 135, 135, 0.05);
   border-left: 4px solid #e90074;
   box-shadow: 1px 1px 10px 0.5px rgb(209, 209, 209);
-
 }
 h3 {
   cursor: pointer;

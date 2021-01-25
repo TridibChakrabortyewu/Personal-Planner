@@ -32,6 +32,8 @@ export default {
       g: "",
       isActive: false,
       isActivet: false,
+      // url: "http://localhost:3000/projects",
+      url: "https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects"
     };
   },
   computed: {
@@ -58,30 +60,26 @@ export default {
       };
       let bellowTh = /^.{1,29}$/g;
       let threeWords = /^([\S]+)\s([\S]+)\s([\S]+)/g;
-
       if (project.title && project.details) {
         if (!this.title.match(threeWords)) {
-          this.g = `TITLE must contain at least 3 words`
-          // this.h = `DETAILS must contain at least 3 words`
-        }else if(!this.title.match(bellowTh)){
-          this.g = `TITLE can contain only 30 characters`
-        }else{
-          this.g = ""
-        fetch(
-          "https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects",
-          {
+          this.g = `TITLE must contains at least 3 words`;
+        } else if (!this.title.match(bellowTh)) {
+          this.g = `TITLE can contains only 30 characters`;
+        } else {
+          this.g = "";
+          fetch(this.url, {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(project),
-          }
-        ).then(() => this.$router.push({ name: "Home" }));
-      }} else {
+          }).then(() => this.$router.push({ name: "Home" }));
+        }
+      } else {
         this.t =
           !project.title && !project.details
-            ? `Please fill 'TITLE' & 'DETAILS'`
+            ? `Please fill out 'TITLE' & 'DETAILS' fields`
             : !project.title
-            ? "Please fill 'TITLE'"
-            : "Please fill 'DETAILS'";
+            ? "Please fill out 'TITLE' field"
+            : "Please fill out 'DETAILS' field";
       }
     },
   },
