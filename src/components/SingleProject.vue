@@ -87,5 +87,13 @@ h3 {
     height: 250px;
     width: 250px;
   }
+  .project{
+    max-width: 300px;
+  }
+  .details p{
+    font-size: 10px;
+    max-width: 280px;
+    text-align: left;
+  }
 }
 </style>
