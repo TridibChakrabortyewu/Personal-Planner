@@ -24,8 +24,8 @@ export default {
   data() {
     return {
       showDetails: false,
-      url: "https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects/" + this.project.id,
-      // url: "http://localhost:3000/projects/" + this.project.id,
+      // url: "https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects/" + this.project.id,
+      url: "http://localhost:3000/projects/" + this.project.id,
     };
   },
   methods: {

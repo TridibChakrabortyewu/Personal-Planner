@@ -16,13 +16,13 @@
       "id": 3,
       "title": "Make marketing emails 🙂❤",
       "details": "Eaque eveniet numquam, libero omnis unde corporis quo autem ea, iste neque natus consectetur suscipit incidunt laboriosam dicta facere cupiditate qui? Voluptas! My first update 🙂",
-      "complete": false
+      "complete": true
     },
     {
       "id": 4,
       "title": "Make you happy 🌟",
       "details": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum ratione exercitationem molestiae sequi! Beatae eius autem facere quis eligendi mollitia.",
-      "complete": false
+      "complete": true
     },
     {
       "title": "Make you happy again",
@@ -63,7 +63,7 @@
     {
       "title": "This is new planner",
       "details": "congrts",
-      "complete": false,
+      "complete": true,
       "id": 11
     },
     {
