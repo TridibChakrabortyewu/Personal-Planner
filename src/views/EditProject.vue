@@ -58,7 +58,7 @@ export default {
       this.details = this.project.details;
     },
     onUpdate() {
-      let bellowTh = /^.{1,29}$/g;
+      let bellowTh = /^.{1,20}$/g;
       let threeWords = /^([\S]+)\s([\S]+)\s([\S]+)/g;
       let p = {
         title: this.title,
@@ -69,7 +69,7 @@ export default {
         if (!this.title.match(threeWords)) {
           this.g = `TITLE must contains at least 3 words`;
         } else if (!this.title.match(bellowTh)) {
-          this.g = `TITLE can contains only 30 characters`;
+          this.g = `TITLE can contains only 21 characters`;
         } else {
           this.g = "";
 

@@ -33,7 +33,8 @@ export default {
       isActive: false,
       isActivet: false,
       // url: "http://localhost:3000/projects",
-      url: "https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects"
+      url:
+        "https://my-json-server.typicode.com/iamsabbirsobhani/json-server-typicode/projects",
     };
   },
   computed: {
@@ -58,13 +59,13 @@ export default {
         details: this.details,
         complete: false,
       };
-      let bellowTh = /^.{1,29}$/g;
+      let bellowTh = /^.{1,20}$/g;
       let threeWords = /^([\S]+)\s([\S]+)\s([\S]+)/g;
       if (project.title && project.details) {
         if (!this.title.match(threeWords)) {
           this.g = `TITLE must contains at least 3 words`;
         } else if (!this.title.match(bellowTh)) {
-          this.g = `TITLE can contains only 30 characters`;
+          this.g = `TITLE can contains only 21 characters`;
         } else {
           this.g = "";
           fetch(this.url, {
@@ -138,5 +139,12 @@ form button {
 .warning {
   color: crimson;
   font-weight: bold;
+  font-size: 15px;
+}
+
+@media (max-width: 425px) {
+  .warning {
+    font-size: 11px;
+  }
 }
 </style>
