@@ -6,10 +6,10 @@
         <router-link
           :to="{ name: 'EditProject', params: { id: this.project.id } }"
         >
-          <span class="material-icons"> edit </span>
+          <span class="material-icons edit"> edit </span>
         </router-link>
-        <span @click="onDelete" class="material-icons"> delete </span>
-        <span @click="onComplete" class="material-icons" :class="{done: this.project.complete}"> done </span>
+        <span @click="onDelete" class="material-icons del"> delete </span>
+        <span @click="onComplete" class="material-icons comp" :class="{done: this.project.complete}"> done </span>
       </div>
     </div>
     <div v-if="showDetails" class="details">
@@ -84,6 +84,12 @@ h3 {
 }
 .done{
   color: #00ce89;
+}
+.material-icons.comp:hover{
+  color: #00ce89;
+}
+.material-icons.del:hover{
+  color: #ff0404;
 }
 @media (max-width: 425px) {
   .image {

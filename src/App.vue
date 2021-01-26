@@ -16,9 +16,7 @@ export default {
 body {
   background: #f2f2f2;
 }
-body {
-  background: url("../src/assets/Layer.svg") no-repeat 0px 0px / contain;
-}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -28,8 +26,5 @@ body {
   color: #555;
 }
 @media (max-width: 425px) and (min-width: 320px) {
-  body {
-    background: url("../src/assets/Layer-m.svg") no-repeat 0px 0px / contain;
-  }
 }
 </style>
