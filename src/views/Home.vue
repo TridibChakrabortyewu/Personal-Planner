@@ -12,8 +12,16 @@
       </div>
     </div>
     <div v-else>
-      <!-- <p>Project loading...</p> -->
-      <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
   </div>
 </template>
@@ -65,7 +73,7 @@ export default {
   computed: {
     filteredProjects() {
       if (this.current === "completed") {
-        return this.projects.filter((project) => project.complete)
+        return this.projects.filter((project) => project.complete);
       }
       if (this.current === "ongoing") {
         return this.projects.filter((project) => !project.complete);
@@ -82,6 +90,7 @@ export default {
   position: relative;
   width: 80px;
   height: 80px;
+  margin: 100px 250px;
 }
 .lds-roller div {
   animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
@@ -94,7 +103,7 @@ export default {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background:  #00ce89;
+  background: #00ce89;
   margin: -4px 0 0 -4px;
 }
 .lds-roller div:nth-child(1) {
@@ -161,5 +170,14 @@ export default {
     transform: rotate(360deg);
   }
 }
-
+@media (max-width: 425px) and (min-width: 300px) {
+  .lds-roller {
+    margin: 80px 130px;
+  }
+}
+@media (max-width: 299px) {
+  .lds-roller {
+    margin: 20px auto;
+  }
+}
 </style>
